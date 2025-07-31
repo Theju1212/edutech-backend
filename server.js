@@ -13,7 +13,7 @@ const app = express();
 
 // ✅ Updated CORS setup
 app.use(cors({
-  origin: 'https://theju1212.github.io/Edutech-frontend',
+  origin: 'https://theju1212.github.io',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
