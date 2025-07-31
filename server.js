@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/auth');
 const adminRoutes = require('./routes/admin');
+const courseRoutes = require("./routes/courseRoutes");
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.use(bodyParser.json());
 // Routes
 app.use('/api', authRoutes);
 app.use('/api/admin', adminRoutes);
+app.use("/api/courses", courseRoutes);
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URL, {

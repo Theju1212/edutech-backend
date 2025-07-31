@@ -1,13 +1,10 @@
-const mongoose = require('mongoose');
+// models/Course.js
+const mongoose = require("mongoose");
 
 const courseSchema = new mongoose.Schema({
   title: String,
-  category: String,
-  subject: String,
-  type: String,
-  description: String,
-    imageUrl: String,       // admin can include image URL
-  videoId: String         // optional: YouTube video ID
+  category: { type: String, enum: ['Academic', 'Skill Development'] },
+  image: String,
 });
 
-module.exports = mongoose.model('Course', courseSchema);
+module.exports = mongoose.model("Course", courseSchema);
