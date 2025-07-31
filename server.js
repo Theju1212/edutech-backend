@@ -5,17 +5,23 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/auth');
+const adminRoutes = require('./routes/admin');
 
 dotenv.config();
 
 const app = express();
-app.use(cors());
+
+// ✅ Updated CORS setup
+app.use(cors({
+  origin: 'https://theju1212.github.io/Edutech-frontend',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
+
 app.use(bodyParser.json());
 
 // Routes
 app.use('/api', authRoutes);
-
-const adminRoutes = require('./routes/admin');
 app.use('/api/admin', adminRoutes);
 
 // MongoDB connection
