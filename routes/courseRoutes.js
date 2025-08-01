@@ -8,6 +8,13 @@ router.get('/', async (req, res) => {
   res.json(courses);
 });
 
+// GET course by ID
+router.get('/:id', async (req, res) => {
+  const course = await Course.findById(req.params.id);
+  if (!course) return res.status(404).json({ message: 'Course not found' });
+  res.json(course);
+});
+
 // POST a new course
 router.post('/', async (req, res) => {
   const course = new Course(req.body);
